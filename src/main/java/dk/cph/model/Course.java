@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -25,6 +27,12 @@ public class Course {
 
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
+
+    @ManyToMany
+    private Set<Student> students = new HashSet<>();
+
+    @ManyToOne
+    private Teacher teacher;
 
     private CourseName courseName;
 
