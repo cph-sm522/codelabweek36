@@ -10,7 +10,9 @@ import java.util.Set;
 @Entity
 @Table(name = "courses")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Setter
 @ToString
 public class Course {
 

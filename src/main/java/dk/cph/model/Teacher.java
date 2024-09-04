@@ -9,7 +9,9 @@ import java.util.Set;
 @Entity
 @Table(name = "teachers")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Setter
 @ToString
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
 public class Teacher {
@@ -27,6 +29,16 @@ public class Teacher {
     @Column(name = "zoom", unique = true)
     private String zoom;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
     private Set<Course> courses = new HashSet<>();
+
+    public void addCourse(Course course) {
+        courses.add(course);
+        course.setTeacher(this);
+    }
+
+    public void removeCourse(Course course) {
+        courses.remove(course);
+        course.setTeacher(null);
+    }
 }

@@ -39,6 +39,6 @@ public class Student {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    @ManyToMany(mappedBy = "student")
+    @ManyToMany(mappedBy = "students")
     private Set<Course> courses = new HashSet<>();
 }
