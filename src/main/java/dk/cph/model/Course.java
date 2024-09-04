@@ -26,6 +26,17 @@ public class Course {
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
+    private CourseName courseName;
+
+    public enum CourseName {
+        SPORTS,
+        MATH,
+        ENGLISH,
+        SCIENCE,
+        ART,
+        MUSIC,
+        HISTORY
+    }
 }
 
 
