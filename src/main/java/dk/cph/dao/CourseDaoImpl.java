@@ -3,15 +3,17 @@ package dk.cph.dao;
 import dk.cph.model.Course;
 import dk.cph.model.Student;
 import dk.cph.model.Teacher;
-import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
-
+@Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CourseDaoImpl implements GenericDAO<Student, Teacher> {
+public class CourseDaoImpl implements GenericDAO<Course, Integer> {
 
     private static CourseDaoImpl instance;
     private static EntityManagerFactory emf;
@@ -24,26 +26,33 @@ public class CourseDaoImpl implements GenericDAO<Student, Teacher> {
         return instance;
     }
 
+
     @Override
-    public List<Student> findAll() {
+    public List<Course> findAll() {
         return List.of();
     }
 
     @Override
-    public void persistEntity(Student entity) {
+    public void persistEntity(Course course) {
+        try(EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            em.persist(course);
+            em.getTransaction().commit();
+        }
     }
 
     @Override
-    public void removeEntity(Teacher id) {
+    public void removeEntity(Integer id) {
+
     }
 
     @Override
-    public Student findEntity(Teacher id) {
+    public Course findEntity(Integer id) {
         return null;
     }
 
     @Override
-    public Student updateEntity(Student entity, Teacher id) {
+    public Course updateEntity(Course entity, Integer id) {
         return null;
     }
 }

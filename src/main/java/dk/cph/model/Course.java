@@ -10,7 +10,10 @@ import java.util.Set;
 @Entity
 @Table(name = "courses")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Builder
+@Setter
 @ToString
 public class Course {
 
@@ -33,7 +36,16 @@ public class Course {
     @ManyToOne
     private Teacher teacher;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "course_name", nullable = false)
     private CourseName courseName;
+
+    public void addTeacher(Teacher teacher){
+        if (teacher != null){
+            this.teacher = teacher;
+            teacher.addCourse(this);
+        }
+    }
 
     public enum CourseName {
         SPORTS,

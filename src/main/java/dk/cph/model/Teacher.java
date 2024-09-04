@@ -9,7 +9,10 @@ import java.util.Set;
 @Entity
 @Table(name = "teachers")
 @NoArgsConstructor
+@AllArgsConstructor
+@Setter
 @Getter
+@Builder
 @ToString
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
 public class Teacher {
@@ -29,4 +32,11 @@ public class Teacher {
 
     @OneToMany(mappedBy = "teacher")
     private Set<Course> courses = new HashSet<>();
-}
+
+    public void addCourse(Course course){
+        if (courses == null) {
+            courses = new HashSet<>();
+        }
+            courses.add(course);
+        }
+    }
