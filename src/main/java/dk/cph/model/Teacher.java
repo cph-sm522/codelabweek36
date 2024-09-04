@@ -3,6 +3,7 @@ package dk.cph.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
 
 
 @Entity
@@ -25,5 +26,8 @@ public class Teacher {
 
     @Column(name = "zoom", unique = true)
     private String zoom;
+
+    @OneToMany(mappedBy = "course")
+    private Set<Course> courses;
 
 }
