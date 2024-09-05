@@ -60,10 +60,9 @@ public class HibernateConfig {
 
     private static void getAnnotationConfiguration(Configuration configuration) {
         // add annotated classes
-        //configuration.addAnnotatedClass(Person.class);
         configuration.addAnnotatedClass(Course.class);
-        configuration.addAnnotatedClass(Teacher.class);
         configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Teacher.class);
     }
 
     public static EntityManagerFactory getEntityManagerFactoryConfig(String name) {

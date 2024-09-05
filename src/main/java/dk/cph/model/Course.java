@@ -40,8 +40,8 @@ public class Course {
     @Column(name = "course_name", nullable = false)
     private CourseName courseName;
 
-    public void addTeacher(Teacher teacher){
-        if (teacher != null){
+    public void addTeacher(Teacher teacher) {
+        if (teacher != null) {
             this.teacher = teacher;
             teacher.addCourse(this);
         }

@@ -30,13 +30,16 @@ public class Teacher {
     @Column(name = "zoom", unique = true)
     private String zoom;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
     private Set<Course> courses = new HashSet<>();
 
-    public void addCourse(Course course){
-        if (courses == null) {
-            courses = new HashSet<>();
-        }
-            courses.add(course);
-        }
+    public void addCourse(Course course) {
+        courses.add(course);
+        course.setTeacher(this);
     }
+
+    public void removeCourse(Course course) {
+        courses.remove(course);
+        course.setTeacher(null);
+    }
+}
