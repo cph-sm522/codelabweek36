@@ -10,8 +10,9 @@ import java.util.Set;
 @Table(name = "teachers")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
+@Builder
 @ToString
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
 public class Teacher {

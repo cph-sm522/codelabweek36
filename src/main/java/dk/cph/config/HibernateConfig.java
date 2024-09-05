@@ -63,7 +63,6 @@ public class HibernateConfig {
         configuration.addAnnotatedClass(Course.class);
         configuration.addAnnotatedClass(Student.class);
         configuration.addAnnotatedClass(Teacher.class);
-
     }
 
     public static EntityManagerFactory getEntityManagerFactoryConfig(String name) {

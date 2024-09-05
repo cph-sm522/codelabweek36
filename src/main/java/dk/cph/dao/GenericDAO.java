@@ -9,5 +9,4 @@ public interface GenericDAO<T, D> {
     void removeEntity(D id);
     T findEntity(D id);
     T updateEntity(T entity, D id);
-
 }
